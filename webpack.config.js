@@ -30,30 +30,23 @@ module.exports = {
     module: { rules },
     optimization: {
         minimizer: [
-          // we specify a custom UglifyJsPlugin here to get source maps in production
-          new UglifyJsPlugin({
-            cache: true,
-            parallel: true,
-            uglifyOptions: {
-              compress: false,
-              ecma: 6,
-              mangle: true
-            },
-            sourceMap: true
-          })
+            // we specify a custom UglifyJsPlugin here to get source maps in production
+            new UglifyJsPlugin({
+                cache: true,
+                parallel: true,
+                uglifyOptions: {
+                    compress: false,
+                    ecma: 6,
+                    mangle: true
+                },
+                sourceMap: true
+            })
         ]
     },
     plugins: [
-        // new webpack.optimize.UglifyJsPlugin({
-        //     sourceMap: true,
-        //     compress: {
-        //         drop_debugger: false,
-        //         warnings: false
-        //     }
-        // }),
         new ExtractTextPlugin('styles.css'),
         new HtmlPlugin({
-            title: 'GeoFeedback',
+            title: 'GeoReview',
             template: 'index.hbs'
         }),
         new CleanWebpackPlugin(['dist'])
