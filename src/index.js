@@ -1,23 +1,17 @@
-import {mapInit as map} from './js/ymaps';
+import { mapInit as map } from './js/ymaps';
 
 window.onload = map();
 
 const myMap = document.querySelector('#map');
 
-myMap.addEventListener('click', () => {
-    const x = 55;
-    const y = 37;
+myMap.events.add('click', function(e) {
+    var coords = e.get('coords');
+    var geoCoords = ymaps.geocode(coords);
+    var position = e.get('position');
 
-    let myObj = new map.GeoObject({
-        geometry: {
-            type: 'Point',
-            coordinates: [x, y]
-        },
-        properties: {
-            clusterCaption: 'So lovely',
-            balloonContentBody: 'lorem ipsum'
-        }
-    })
+    geoCoords.then(res => {
+        var obj = {};
 
-    map.geoObjects.add(myObj);
+
+    });
 });
